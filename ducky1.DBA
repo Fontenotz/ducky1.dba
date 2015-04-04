@@ -1,0 +1,41 @@
+cls
+rem Drawing a Game Board
+
+ink rgb(255,0,0),1
+for x=100 to 600 step 50
+  for y=50 to 320 step 30
+     box x,y,x+45,y+27
+  next y
+next x
+x=324
+y=210
+ink rgb(0,255,0),1
+set cursor 100,50
+box 100,50,145,77
+set cursor 550,50
+box 550,50,595,77
+set cursor 100,290
+box 100,320,145,347
+set cursor 550,290
+box 550,320,595,347
+load bitmap "boat.bmp",2
+get image 2,0,0,44,33
+sprite 2,x,y,2
+
+load bitmap "horse1.jpeg",3
+get image 3,0,0,40,35
+sprite 3,100,50,3
+
+do
+if upkey()=1 then y=y-4
+if downkey()=1 then y=y+4
+if rightkey()=1 then x=x+6
+if leftkey()=1 then x=x-6
+get image 2,0,0,44,33
+sprite 2,x,y,2
+
+if mouseclick()=1 then exit
+loop
+
+end
+
